@@ -9,4 +9,4 @@ Layout/SpaceInsideArrayLiteralBrackets:
 
 Layout/LineLength:
   Max: 100
-  AllowedPatterns: ['\A#']
+  AllowedPatterns: ['\A\s*#']

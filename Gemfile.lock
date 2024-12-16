@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/tnir/annotate_models.git
+  revision: b4f12a0e7a442cdf0bb13bab5854e090e2585a49
+  branch: rails-8
+  specs:
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 9.0)
+      rake (>= 10.4, < 14.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -287,6 +296,8 @@ GEM
       rubocop (~> 1.61)
     ruby-progressbar (1.13.0)
     securerandom (0.4.0)
+    shoulda-matchers (6.4.0)
+      activesupport (>= 5.2.0)
     solid_cable (3.0.4)
       actioncable (>= 7.2)
       activejob (>= 7.2)
@@ -357,6 +368,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  annotate!
   bootsnap
   brakeman
   debug
@@ -372,6 +384,7 @@ DEPENDENCIES
   rspec-rails (~> 7.1)
   rubocop-rails-omakase
   rubocop-rspec (~> 3.3)
+  shoulda-matchers (~> 6.4)
   solid_cable
   solid_cache
   solid_queue

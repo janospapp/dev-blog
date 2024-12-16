@@ -1,8 +1,52 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id              :bigint           not null, primary key
+#  body            :text
+#  body_updated_at :datetime
+#  published_at    :datetime
+#  ref             :string           not null
+#  summary         :text
+#  title           :string
+#  visitor_count   :integer          default(0), not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+# Indexes
+#
+#  index_posts_on_published_at  (published_at)
+#  index_posts_on_ref           (ref) UNIQUE
+#
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  describe 'validations' do
+  subject(:post) { build(:post) }
 
+  describe 'validations' do
+    context 'when published' do
+      subject(:post) { build(:post, :published) }
+
+      it { is_expected.to validate_presence_of(:title) }
+      it { is_expected.to validate_presence_of(:summary) }
+      it { is_expected.to validate_presence_of(:body) }
+    end
+
+    context 'when not published' do
+      it { is_expected.not_to validate_presence_of(:title) }
+      it { is_expected.not_to validate_presence_of(:summary) }
+      it { is_expected.not_to validate_presence_of(:body) }
+    end
+
+    it { is_expected.to validate_numericality_of(:visitor_count).is_greater_than_or_equal_to(0) }
+
+    describe ':ref' do
+      # For these specs the post must be persisted, otherwise 'ref' is generated
+      subject(:post) { create(:post) }
+
+      it { is_expected.to validate_presence_of(:ref) }
+      it { is_expected.to validate_uniqueness_of(:ref) }
+    end
   end
 
   describe '#published' do
@@ -31,8 +75,6 @@ RSpec.describe Post, type: :model do
   end
 
   describe '#publish!' do
-    subject(:post) { build(:post) }
-
     it 'sets published time' do
       expect { post.publish! }.to change(post, :published?).from(false).to(true)
     end

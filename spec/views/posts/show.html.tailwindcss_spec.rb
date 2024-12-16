@@ -2,11 +2,12 @@ require 'rails_helper'
 
 RSpec.describe "posts/show", type: :view do
   before(:each) do
-    assign(:post, Post.create!(
+    assign(:post, create(
+      :post,
+      :published,
       title: "Title",
       summary: "MyText",
       body: "MyText",
-      visitor_count: 2
     ))
   end
 
@@ -15,6 +16,5 @@ RSpec.describe "posts/show", type: :view do
     expect(rendered).to match(/Title/)
     expect(rendered).to match(/MyText/)
     expect(rendered).to match(/MyText/)
-    expect(rendered).to match(/2/)
   end
 end

@@ -54,7 +54,7 @@ module Admin
       @post.destroy!
 
       respond_to do |format|
-        format.html { redirect_to posts_path, status: :see_other, notice: "Post was successfully destroyed." }
+        format.html { redirect_to posts_path, status: :see_other, notice: "Post got destroyed." }
         format.json { head :no_content }
       end
     end
@@ -67,7 +67,7 @@ module Admin
 
       # Only allow a list of trusted parameters through.
       def post_params
-        params.expect(post: [ :title, :summary, :body, :published_at, :body_updated_at, :visitor_count ])
+        params.expect(post: %i[title summary body])
       end
   end
 end
