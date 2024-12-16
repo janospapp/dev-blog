@@ -61,9 +61,10 @@ jobs:
       postgres:
         # Docker Hub image
         image: postgres:17-alpine
+        ports:
+          - 5432:5432
         # Provide the password for postgres
         env:
-          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
         # Set health checks to wait until postgres has started
         options: >-
