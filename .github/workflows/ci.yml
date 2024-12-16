@@ -83,6 +83,9 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Compile assets
+        run: bin/rails assets:precompile
+
       - name: Set up the database
         run: bin/rails db:setup
         env:
