@@ -53,3 +53,45 @@ jobs:
       - name: Lint code for consistent style
         run: bin/rubocop -f github
 
+  test_ruby:
+    runs-on: ubuntu-latest
+
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres:17-alpine
+        ports:
+          - 5432:5432
+        # Provide the password for postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      - name: Compile assets
+        run: bin/rails assets:precompile
+
+      - name: Set up the database
+        run: bin/rails db:setup
+        env:
+          POSTGRES_HOST: localhost
+
+      - name: Runs all the specs
+        run: bin/rspec
+        env:
+          POSTGRES_HOST: localhost
