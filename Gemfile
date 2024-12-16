@@ -51,9 +51,21 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  gem "factory_bot_rails", "~> 6.4"
+  gem "rspec-rails", "~> 7.1"
+  gem "rubocop-rspec", "~> 3.3"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  # Use a fork until Rails 8 support is merged and released in the official Gem
+  gem "annotate", git: "https://github.com/tnir/annotate_models.git", branch: "rails-8"
+end
+
+group :test do
+  gem "faker", "~> 3.5"
+  gem "shoulda-matchers", "~> 6.4"
 end
