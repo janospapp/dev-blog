@@ -81,7 +81,12 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Set up the database
+        run: bin/rails db:setup
+        env:
+          POSTGRES_HOST: localhost
+
       - name: Runs all the specs
         run: bin/rspec
         env:
-          POSTGRES_HOST: postgres
+          POSTGRES_HOST: localhost
