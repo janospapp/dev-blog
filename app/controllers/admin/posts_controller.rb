@@ -1,6 +1,5 @@
 module Admin
   class PostsController < ApplicationController
-    before_action :authenticate_admin
     before_action :set_post, only: %i[ show edit update destroy ]
 
     # GET /posts or /posts.json
@@ -40,7 +39,9 @@ module Admin
     def update
       respond_to do |format|
         if @post.update(post_params)
-          format.html { redirect_to @post, notice: "Post was successfully updated." }
+          format.html {
+            redirect_to admin_post_path(@post), notice: "Post was successfully updated."
+          }
           format.json { render :show, status: :ok, location: @post }
         else
           format.html { render :edit, status: :unprocessable_entity }
