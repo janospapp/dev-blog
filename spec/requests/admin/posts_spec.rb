@@ -235,13 +235,14 @@ RSpec.describe "/admin/posts", type: :request do
           expect(record.reload).not_to be_published
         end
 
-        it "redirects to the edit page" do
+        it "renders the edit page with the error" do
           patch publish_admin_post_url(record)
-          expect(response).to redirect_to(edit_admin_post_url(record))
+          assert_template 'admin/posts/edit'
+          expect(response.body).to include("Title can&#39;t be blank")
         end
       end
 
-      context "when the post is already publisjed" do
+      context "when the post is already published" do
         let(:record) { create(:post, :published) }
 
         it "keeps the post published" do

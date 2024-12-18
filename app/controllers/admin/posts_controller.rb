@@ -63,7 +63,7 @@ module Admin
       if @post.published? || @post.publish
         redirect_to admin_posts_path
       else
-        redirect_to edit_admin_post_path(@post)
+        render :edit, status: :unprocessable_entity
       end
     end
 
