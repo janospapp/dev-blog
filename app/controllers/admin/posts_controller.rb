@@ -26,11 +26,11 @@ module Admin
 
       respond_to do |format|
         if @post.save
-          format.html { redirect_to @post, notice: "Post was successfully created." }
-          format.json { render :show, status: :created, location: @post }
+          format.html {
+            redirect_to admin_post_path(@post), notice: "Post was successfully created."
+          }
         else
           format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @post.errors, status: :unprocessable_entity }
         end
       end
     end
@@ -42,10 +42,8 @@ module Admin
           format.html {
             redirect_to admin_post_path(@post), notice: "Post was successfully updated."
           }
-          format.json { render :show, status: :ok, location: @post }
         else
           format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @post.errors, status: :unprocessable_entity }
         end
       end
     end
@@ -55,8 +53,9 @@ module Admin
       @post.destroy!
 
       respond_to do |format|
-        format.html { redirect_to posts_path, status: :see_other, notice: "Post got destroyed." }
-        format.json { head :no_content }
+        format.html {
+          redirect_to admin_posts_path, status: :see_other, notice: "Post got destroyed."
+        }
       end
     end
 

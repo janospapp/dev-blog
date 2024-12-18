@@ -25,6 +25,10 @@ class Post < ApplicationRecord
   scope :published, -> { where.not(published_at: nil) }
 
   validates :title, :summary, :body, presence: true, if: :published?
+  validates :published_at, comparison: {
+    less_than_or_equal_to: -> { Time.current },
+    message: "cannot be in the future"
+  }, allow_nil: true
   validates :ref, presence: true, uniqueness: true
   validates :visitor_count, numericality: { greater_than_or_equal_to: 0 }
 
