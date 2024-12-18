@@ -5,7 +5,7 @@
 #  id            :bigint           not null, primary key
 #  email         :citext           not null
 #  password_hash :string
-#  status        :integer          default(1), not null
+#  status        :integer          default("unverified"), not null
 #
 # Indexes
 #
