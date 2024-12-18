@@ -40,6 +40,12 @@ RSpec.describe Post, type: :model do
 
     it { is_expected.to validate_numericality_of(:visitor_count).is_greater_than_or_equal_to(0) }
 
+    it 'must be published in the past' do
+      post.published_at = 3.hours.from_now
+      post.valid?
+      expect(post.errors.messages[:published_at]).to include(/cannot be in the future/)
+    end
+
     describe ':ref' do
       # For these specs the post must be persisted, otherwise 'ref' is generated
       subject(:post) { create(:post) }

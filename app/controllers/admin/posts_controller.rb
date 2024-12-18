@@ -1,6 +1,5 @@
 module Admin
   class PostsController < ApplicationController
-    before_action :authenticate_admin
     before_action :set_post, only: %i[ show edit update destroy ]
 
     # GET /posts or /posts.json
@@ -27,11 +26,11 @@ module Admin
 
       respond_to do |format|
         if @post.save
-          format.html { redirect_to @post, notice: "Post was successfully created." }
-          format.json { render :show, status: :created, location: @post }
+          format.html {
+            redirect_to admin_post_path(@post), notice: "Post was successfully created."
+          }
         else
           format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @post.errors, status: :unprocessable_entity }
         end
       end
     end
@@ -40,11 +39,11 @@ module Admin
     def update
       respond_to do |format|
         if @post.update(post_params)
-          format.html { redirect_to @post, notice: "Post was successfully updated." }
-          format.json { render :show, status: :ok, location: @post }
+          format.html {
+            redirect_to admin_post_path(@post), notice: "Post was successfully updated."
+          }
         else
           format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @post.errors, status: :unprocessable_entity }
         end
       end
     end
@@ -54,8 +53,9 @@ module Admin
       @post.destroy!
 
       respond_to do |format|
-        format.html { redirect_to posts_path, status: :see_other, notice: "Post got destroyed." }
-        format.json { head :no_content }
+        format.html {
+          redirect_to admin_posts_path, status: :see_other, notice: "Post got destroyed."
+        }
       end
     end
 
