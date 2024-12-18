@@ -1,6 +1,6 @@
 module Admin
   class PostsController < ApplicationController
-    before_action :set_post, only: %i[ show edit update destroy ]
+    before_action :set_post, only: %i[ show edit update destroy publish unpublish ]
 
     # GET /posts or /posts.json
     def index
@@ -57,6 +57,20 @@ module Admin
           redirect_to admin_posts_path, status: :see_other, notice: "Post got destroyed."
         }
       end
+    end
+
+    def publish
+      if @post.published? || @post.publish
+        redirect_to admin_posts_path
+      else
+        render :edit, status: :unprocessable_entity
+      end
+    end
+
+    def unpublish
+      @post.unpublish if @post.published?
+
+      redirect_to admin_posts_path
     end
 
     private

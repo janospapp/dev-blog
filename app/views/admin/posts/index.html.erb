@@ -5,12 +5,24 @@
 
   <% content_for :title, "Posts" %>
 
+  <p>
+    <%= link_to "New post", new_admin_post_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  </p>
   <div id="posts" class="min-w-full">
     <% @posts.each do |post| %>
       <%= render "post_card", post: post %>
       <p>
-        <%= link_to "Show this post", admin_post_path(post), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <%= link_to "Show", admin_post_path(post), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
       </p>
+      <p>
+        <%= link_to "Edit", edit_admin_post_path(post), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      </p>
+      <% if post.published? %>
+        <%= button_to "Unpublish", unpublish_admin_post_path(post), method: :patch, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <% else %>
+        <%= button_to "Publish", publish_admin_post_path(post), method: :patch, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <% end %>
+      <%= button_to "Destroy", admin_post_path(post), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-red-500 text-white font-medium" %>
     <% end %>
   </div>
 </div>

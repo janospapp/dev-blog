@@ -68,5 +68,6 @@ end
 
 group :test do
   gem "faker", "~> 3.5"
+  gem "rails-controller-testing", "~> 1.0"
   gem "shoulda-matchers", "~> 6.4"
 end
