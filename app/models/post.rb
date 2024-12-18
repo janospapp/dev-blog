@@ -36,11 +36,11 @@ class Post < ApplicationRecord
     published_at.present?
   end
 
-  def publish!
+  def publish
     update(published_at: Time.current)
   end
 
-  def unpublish!
+  def unpublish
     update(published_at: nil)
   end
 

@@ -28,5 +28,13 @@ RSpec.describe Admin::PostsController, type: :routing do
     it "routes to #destroy" do
       expect(delete: "/admin/posts/1").to route_to("admin/posts#destroy", id: "1")
     end
+
+    it "routes to #publish" do
+      expect(patch: "/admin/posts/1/publish").to route_to("admin/posts#publish", id: "1")
+    end
+
+    it "routes to #unpublish" do
+      expect(patch: "/admin/posts/1/unpublish").to route_to("admin/posts#unpublish", id: "1")
+    end
   end
 end

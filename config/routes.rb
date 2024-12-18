@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   resources :posts, only: %i[index show]
 
   namespace :admin do
-    resources :posts
+    resources :posts do
+      member do
+        patch :publish
+        patch :unpublish
+      end
+    end
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

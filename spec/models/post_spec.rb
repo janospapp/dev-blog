@@ -80,17 +80,17 @@ RSpec.describe Post, type: :model do
     end
   end
 
-  describe '#publish!' do
+  describe '#publish' do
     it 'sets published time' do
-      expect { post.publish! }.to change(post, :published?).from(false).to(true)
+      expect { post.publish }.to change(post, :published?).from(false).to(true)
     end
   end
 
-  describe '#unpublish!' do
+  describe '#unpublish' do
     subject(:post) { build(:post, :published) }
 
     it 'removes published time' do
-      expect { post.unpublish! }.to change(post, :published?).from(true).to(false)
+      expect { post.unpublish }.to change(post, :published?).from(true).to(false)
     end
   end
 
