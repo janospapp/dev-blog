@@ -42,6 +42,8 @@ gem "rodauth-rails", "~> 2.0"
 gem "sequel-activerecord_connection", "~> 2.0"
 gem "tilt", "~> 2.4"
 
+gem "heroicon", "~> 1.0"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
