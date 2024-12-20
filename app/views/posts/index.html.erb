@@ -1,4 +1,4 @@
-<div class="w-full">
+<div>
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
@@ -6,20 +6,10 @@
   <% content_for :title, "Posts" %>
 
   <div class="flex flex-row">
-    <div id="posts" class="w-3/4 px-4 grid grid-cols-3 gap-2 items-start">
+    <div id="posts" class="px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 items-start">
       <% @posts.each do |post| %>
         <%= render "post_card", post: post %>
       <% end %>
     </div>
-    <aside id="sidebar" class="w-1/4 flex flex-col items-center">
-      <h1 class="text-2xl my-4">Welcome!</h1>
-      <p class="my-2">
-        Welcome to my development blog. I plan to write about various topics related to multiple technologies.
-        (Mainly Ruby on Rails and NixOS in the beginning.) Look around in the posts on the left.
-      </p>
-      <p>
-        <strong>Note:</strong> The website's name is not related to Meta's <code>llama</code> AI models in any way.
-      </p>
-    </aside>
   </div>
 </div>

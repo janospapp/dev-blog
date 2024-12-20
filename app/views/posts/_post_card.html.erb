@@ -3,16 +3,13 @@
     <%= post.title %>
   </h1>
 
-  <div class="text-xs self-start">
-    <strong>Published at:</strong>
-    <span><%= post.published_at.to_formatted_s(:date_only) %></span>
-  </div>
+  <%= render "post_timestamps", post: post %>
 
   <p class="my-5 text-justify">
     <%= post.summary %>
   </p>
 
   <p>
-    <%= link_to "Read more", post, class: "rounded-lg py-2 px-4 inline-block font-medium bg-nord3" %>
+    <%= link_to "Read more", post, class: "button" %>
   </p>
 </div>
