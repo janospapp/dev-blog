@@ -1,17 +1,15 @@
-<div id="<%= dom_id post %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
+<div id="<%= dom_id post %>" class="bg-nord1 rounded-md flex flex-col items-center p-4">
+  <h1 class="text-2xl mb-2">
     <%= post.title %>
-  </p>
+  </h1>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Summary:</strong>
+  <%= render "posts/timestamps", post: post %>
+
+  <p class="my-5 text-justify">
     <%= post.summary %>
   </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Published at:</strong>
-    <%= post.published_at %>
+  <p>
+    <%= link_to "Read more", post, class: "button" %>
   </p>
-
 </div>
