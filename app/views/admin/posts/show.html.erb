@@ -4,7 +4,7 @@
       <p class="py-2 px-3 mb-5 bg-nord14 text-nord3 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <%= render @post %>
+    <%= render "admin/posts/post", post: @post %>
 
     <%= link_to "Edit this post", edit_admin_post_path(@post), class: "button" %>
     <%= link_to "Back to posts", admin_posts_path, class: "button" %>
