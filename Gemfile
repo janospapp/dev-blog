@@ -40,7 +40,7 @@ gem "thruster", require: false
 gem "bcrypt", "~> 3.1"
 gem "rodauth-rails", "~> 2.0"
 gem "sequel-activerecord_connection", "~> 2.0"
-gem "tilt", "~> 2.4"
+gem "tilt", "~> 2.5"
 
 gem "heroicon", "~> 1.0"
 
