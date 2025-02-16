@@ -16,6 +16,27 @@ module MarkdownHelper
           shadow-md shadow-nord8"
         ><code class="language-#{language}">#{code}</code></pre>)
     end
+
+    def codespan(code)
+      %(<code class="text-nord9">#{code}</code>)
+    end
+
+    def header(header, header_level)
+      case header_level
+      when 1
+        %(<h1 class="my-5 text-5xl">#{header}</h1>)
+      when 2
+        %(<h2 class="my-3 text-4xl">#{header}</h2>)
+      else
+        super
+      end
+    end
+
+    def link(link, title, content)
+      %(<a href="#{link}" target="_blank" class="
+          border-r border-b px-2 ml-px hover:border hover:border-nord8 hover:m-0"
+        >#{content}</a>)
+    end
   end
 
   def renderer

@@ -6,15 +6,15 @@ RSpec.describe "posts/show", type: :view do
       :post,
       :published,
       title: "Title",
-      summary: "MyText",
-      body: "MyText",
+      summary: "MySummary",
+      body: "MyBody",
     ))
   end
 
   it "renders attributes in <p>" do
     render
     expect(rendered).to match(/Title/)
-    expect(rendered).to match(/MyText/)
-    expect(rendered).to match(/MyText/)
+    expect(rendered).to match(/MyBody/)
+    expect(rendered).not_to match(/MySummary/)
   end
 end

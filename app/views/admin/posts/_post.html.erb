@@ -5,18 +5,18 @@
   </p>
 
   <p class="my-5">
+    <strong class="block font-medium mb-1">Published at:</strong>
+    <%= post.published_at %>
+  </p>
+
+  <p class="my-5">
     <strong class="block font-medium mb-1">Summary:</strong>
     <%= post.summary %>
   </p>
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Body:</strong>
-    <%= post.body %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Published at:</strong>
-    <%= post.published_at %>
+    <%= md(post.body) %>
   </p>
 
 </div>
