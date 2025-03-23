@@ -10,17 +10,6 @@ module MarkdownHelper
   end
 
   class CustomRenderer < Redcarpet::Render::HTML
-    def block_code(code, language)
-      %(<pre class="
-          my-5 border-solid border-2 border-nord8 rounded-md
-          shadow-md shadow-nord8"
-        ><code class="language-#{language}">#{code}</code></pre>)
-    end
-
-    def codespan(code)
-      %(<code class="text-nord9">#{code}</code>)
-    end
-
     def header(header, header_level)
       case header_level
       when 1
@@ -32,9 +21,21 @@ module MarkdownHelper
       end
     end
 
+    def block_code(code, language)
+      %(<pre class="
+          my-5 border-solid border-2 border-nord8 rounded-md shadow-md
+          shadow-nord8"
+        ><code class="language-#{language}">#{code}</code></pre>)
+    end
+
+    def codespan(code)
+      %(<code class="text-nord9">#{code}</code>)
+    end
+
     def link(link, title, content)
       %(<a href="#{link}" target="_blank" class="
-          border-r border-b px-2 ml-px hover:border hover:border-nord8 hover:m-0"
+          border-r border-b px-2 ml-px hover:border hover:border-nord8
+          hover:m-0"
         >#{content}</a>)
     end
   end
