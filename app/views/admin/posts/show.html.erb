@@ -6,10 +6,12 @@
 
     <%= render "admin/posts/post", post: @post %>
 
-    <%= link_to "Edit this post", edit_admin_post_path(@post), class: "button" %>
-    <%= link_to "Back to posts", admin_posts_path, class: "button" %>
-    <div class="inline-block ml-2">
-      <%= button_to "Destroy this post", admin_post_path(@post), method: :delete, class: "button-danger" %>
+    <div class="mt-5">
+      <%= link_to "Edit this post", edit_admin_post_path(@post), class: "button" %>
+      <%= link_to "Back to posts", admin_posts_path, class: "button" %>
+      <div class="inline-block ml-2">
+        <%= button_to "Destroy this post", admin_post_path(@post), method: :delete, class: "button-danger" %>
+      </div>
     </div>
   </div>
 </div>

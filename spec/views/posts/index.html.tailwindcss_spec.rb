@@ -7,16 +7,16 @@ RSpec.describe "posts/index", type: :view do
         :post,
         :published,
         title: "Title",
-        summary: "MyText",
-        body: "MyText",
+        summary: "MySummary",
+        body: "MyBody",
         visitor_count: 2
       ),
       create(
         :post,
         :published,
         title: "Title",
-        summary: "MyText",
-        body: "MyText",
+        summary: "MySummary",
+        body: "MyBody",
         visitor_count: 2
       )
     ])
@@ -26,7 +26,7 @@ RSpec.describe "posts/index", type: :view do
     render
     cell_selector = 'div>p'
     assert_select 'h1', text: Regexp.new("Title".to_s), count: 2
-    assert_select cell_selector, text: Regexp.new("MyText".to_s), count: 2
-    assert_select cell_selector, text: Regexp.new("MyText".to_s), count: 2
+    assert_select cell_selector, text: Regexp.new("MySummary".to_s), count: 2
+    assert_select cell_selector, text: Regexp.new("MyBody".to_s), count: 0
   end
 end

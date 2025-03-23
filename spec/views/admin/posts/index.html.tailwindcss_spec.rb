@@ -7,15 +7,15 @@ RSpec.describe "admin/posts/index", type: :view do
         :post,
         :published,
         title: "Title",
-        summary: "MyText",
-        body: "MyText",
+        summary: "MySummary",
+        body: "MyBody",
         visitor_count: 2
       ),
       create(
         :post,
         title: "Title",
-        summary: "MyText",
-        body: "MyText",
+        summary: "MySummary",
+        body: "MyBody",
         visitor_count: 2
       )
     ])
@@ -25,8 +25,8 @@ RSpec.describe "admin/posts/index", type: :view do
     render
     cell_selector = 'div>p'
     assert_select cell_selector, text: Regexp.new("Title"), count: 2
-    assert_select cell_selector, text: Regexp.new("MyText"), count: 2
-    assert_select cell_selector, text: Regexp.new("MyText"), count: 2
+    assert_select cell_selector, text: Regexp.new("MySummary"), count: 2
+    assert_select cell_selector, text: Regexp.new("MyBody"), count: 0
     assert_select 'button', text: Regexp.new("Unpublish"), count: 1
     assert_select 'button', text: Regexp.new("Publish"), count: 1
   end
