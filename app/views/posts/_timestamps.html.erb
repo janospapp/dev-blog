@@ -1,4 +1,4 @@
-<div class="text-xs self-start">
+<div class="text-sm self-start">
   <strong>Published at:</strong>
   <span><%= post.published_at.to_formatted_s(:date_only) %></span>
   <% if post.published_at + 1.day < post.body_updated_at %>
