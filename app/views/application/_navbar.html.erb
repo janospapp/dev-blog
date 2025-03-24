@@ -1,9 +1,9 @@
-<nav class="container bg-nord0 h-14 mx-auto px-4 flex flex-row items-center justify-between border-b-2 border-nord4">
+<nav class="container bg-nord0 h-20 mx-auto px-4 flex flex-row items-center justify-between border-b-2 border-nord4">
   <div class="min-w-fit text-nowrap flex flex-row items-center">
-    <%= heroicon "command-line" %>
-    <%= link_to "Did Llamas Know?", root_path, class: "text-3xl px-4 py-2 text-nowrap" %>
+    <%= link_to "Did Llamas Know", root_path, class: "text-5xl px-4 py-2 text-nowrap" %>
+    <%= inline_svg_tag 'llama_icon.svg', height: '48px', width: '48px' %>
   </div>
-  <div class="text-2xl px-8">
+  <div class="text-3xl px-8">
     <%= link_to "Blog", posts_path %>
   </div>
 </nav>

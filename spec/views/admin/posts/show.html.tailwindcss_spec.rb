@@ -1,17 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe "admin/posts/show", type: :view do
-  before(:each) do
-    assign(:post, create(
+  let(:post) do
+    create(
       :post,
       title: "Title",
       summary: "MySummary",
       body: "MyBody",
-    ))
+    )
+  end
+
+  before do
+    assign(:post, post)
+
+    render
   end
 
   it "renders attributes in <p>" do
-    render
     expect(rendered).to match(/Title/)
     expect(rendered).to match(/MySummary/)
     expect(rendered).to match(/MyBody/)
@@ -39,27 +44,20 @@ The above `bar` method prints the string "Hello bar"
         BODY
       )
     end
-    before(:each) do
-      assign(:post, post)
-    end
 
     it 'renders main headers' do
-      render
       expect(rendered).to match(/<h1.*>Summary<\/h1>/)
     end
 
     it 'renders sub headers' do
-      render
       expect(rendered).to match(/<h2.*>Explanation<\/h2>/)
     end
 
     it 'renders code blocks' do
-      render
       expect(rendered).to match(/<pre.*><code.*>class Foo; def bar.*<\/code><\/pre>/m)
     end
 
     it 'renders inline code' do
-      render
       expect(rendered).to match(/<code.*>bar<\/code>/)
     end
   end
